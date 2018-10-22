@@ -1,0 +1,5 @@
+<div class="context-menu" id="contextMenu">
+	<div class="context-menu-item" *ngFor="let item of menuItems" (click)="menuItemClick(item)">
+		<span class="context-menu-item-title">{{item.title}}</span>
+	</div>
+</div>

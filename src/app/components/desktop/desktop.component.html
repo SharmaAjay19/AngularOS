@@ -1,0 +1,130 @@
+<app-context-menu (clickOutside)="hideContextMenu()" [style.display]="showContextMenu? 'block': 'none'"></app-context-menu>
+<div class="nav">
+  <div class="left">
+    Ubuntu Desktop
+  </div>
+
+  <div class="right">
+    <i class="fa fa-wifi fa-fw"></i>
+    <i class="language">En</i>
+    <i class="fa fa-battery-full fa-fw"></i>
+    <i class="fa fa-volume-up fa-fw"></i>
+    <span class="time"></span>
+    <span class="am-pm"></span>
+    <i class="fa fa-power-off fa-fw"></i>
+  </div>
+</div>
+
+<div class="launcher">
+
+  <button href="#" data-toggle="tooltip" title="Search your computer">
+    <img src="/assets/img/logo-ubuntu_cof-orange-hex.svg.png">
+  </button>
+
+  <span data-toggle="tooltip" title="Files">
+    <i class="fa fa-folder"></i>
+  </span>
+
+  <span data-toggle="tooltip" title="Firefox Web Browser">
+    <i class="fa fa-firefox"></i>
+  </span>
+
+  <span data-toggle="tooltip" title="System Setting">
+    <i class="fa fa-cog"></i>
+  </span>
+
+  <span data-toggle="tooltip" title="Terminal">
+    <i class="fa fa-terminal"></i>
+  </span>
+</div>
+
+<div class="desktop-overlay">
+  <div class="overlay-content">
+    <div class="textbox">
+      <span class="search-icon"><i class="fa fa-search"></i></span>
+      <input type="text" class="search" placeholder="Search your computer">
+    </div>
+
+    <div class="boxes">
+      <div class="files">
+        <div class="heading">
+          <p>Files & Folders</p>
+        </div>
+        <div class="box">
+          <i class="fa fa-file"></i>
+          <p>File</p>
+        </div>
+        <div class="box">
+          <i class="fa fa-file"></i>
+          <p>File</p>
+        </div>
+        <div class="box">
+          <i class="fa fa-folder"></i>
+          <p>Folder</p>
+        </div>
+        <div class="box">
+          <i class="fa fa-folder"></i>
+          <p>Folder</p>
+        </div>
+        <div class="box">
+          <i class="fa fa-folder"></i>
+          <p>Folder</p>
+        </div>
+        <div class="box">
+          <i class="fa fa-file"></i>
+          <p>File</p>
+        </div>
+        <div class="box">
+          <i class="fa fa-folder"></i>
+          <p>Folder</p>
+        </div>
+        <div class="box">
+          <i class="fa fa-file"></i>
+          <p>File</p>
+        </div>
+      </div>
+
+      <div class="apps">
+        <div class="heading">
+          <p>Applications</p>
+        </div>
+        <div class="box">
+          <i class="fa fa-facebook-official"></i>
+          <p>Facebook</p>
+        </div>
+        <div class="box">
+          <i class="fa fa-firefox"></i>
+          <p>Firefox</p>
+        </div>
+        <div class="box">
+          <i class="fa fa-chrome"></i>
+          <p>Chromium</p>
+        </div>
+        <div class="box">
+          <i class="fa fa-cog"></i>
+          <p>System Setting</p>
+        </div>
+        <div class="box">
+          <i class="fa fa-calculator"></i>
+          <p>Calculator</p>
+        </div>
+      </div>
+    </div>
+  </div>	
+</div>
+
+<div class="desktop">
+  <div class="file">
+	<div style="display:block;">
+		<img src="https://4vector.com/i/free-vector-text-file-icon_101919_Text_File_Icon.png" height="50px" width="50px">
+	</div>
+	<div style="
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 50px;
+    color: white;">
+    	<span>File1Helleluah.txt</span>
+    </div>
+  </div>
+</div>
