@@ -9,6 +9,16 @@ declare var $ : any;
   styleUrls: ['./textEditor.component.css']
 })
 export class TextEditorComponent {
+
+  	ESCAPE_KEYCODE = 27;
+
+  	@HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+	    if (event.keyCode === this.ESCAPE_KEYCODE) {
+	      this.editorOpen = false;
+	      this.file = null;
+	    }
+  	}
+
 	file: any = {};
 	editorOpen: boolean = false;
 	editorConfig: any;

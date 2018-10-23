@@ -10,6 +10,7 @@ import { AngularDraggableModule } from 'angular2-draggable';
 import {DesktopComponent} from './components/desktop/desktop.component';
 import {ContextMenuComponent} from './components/context-menu/contextMenu.component';
 import {TextEditorComponent} from './components/text-editor/textEditor.component';
+import {BrowserComponent} from './components/browser/browser.component';
 import { AppComponent } from './app.component';
 
 import {CommonDataService} from './services/commonData.service';
@@ -20,7 +21,8 @@ import {CommonDataService} from './services/commonData.service';
     AppComponent,
     DesktopComponent,
     ContextMenuComponent,
-    TextEditorComponent
+    TextEditorComponent,
+    BrowserComponent
   ],
   imports: [
     BrowserModule,

@@ -205,7 +205,7 @@ body {
 }
 
 .desktop {
-	background-image: url('http://ubuntuhandbook.org/wp-content/uploads/2016/02/xerus_wallpaper.jpg');
+	background-image: url('assets/img/xerus_wallpaper.jpg');
 	background-size: cover;
 	background-attachment: fixed;
 	background-position: center;

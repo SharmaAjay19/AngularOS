@@ -1,0 +1,7 @@
+<div *ngIf="showBrowser" class="browser" ngDraggable [handle]="BrowserHeader">
+	<div #BrowserHeader class="browserHeader"><span>{{pageTitle}}</span><input type="text" name="browserUrl" class="browserUrl" [(ngModel)]="urlInput" (keyup.enter)="loadUrl()"></div>
+	<div class="browserPageSection">
+		<iframe style="height:100%;width:100%" [src]="pageUrl"></iframe>
+	</div>
+
+</div>

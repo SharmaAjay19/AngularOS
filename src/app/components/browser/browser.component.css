@@ -1,0 +1,46 @@
+.browser{
+	position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    border: 1px solid;
+    width: 100%;
+    height: 70%;
+}
+
+.browserHeader{
+	position: relative;
+    color: white;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 34px;
+    padding: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #000;
+    background-color: #514F48;
+    z-index: 10;
+}
+
+.browserUrl{
+    color: black;
+    display: inline-block;
+}
+
+.browserFooter{
+	position: relative;
+	width: 100%;
+	height: 20px;
+	z-index: 10;
+	cursor: pointer;
+	background-color: #FFF0F5;
+}
+
+.browserPageSection{
+	position: relative;
+    z-index: 10;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}

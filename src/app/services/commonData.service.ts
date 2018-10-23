@@ -13,6 +13,7 @@ export class CommonDataService {
 	public currentPathChangedEvent: EventEmitter<any> = new EventEmitter();
 	public contextMenuSelectEvent: EventEmitter<any> = new EventEmitter();
 	public openFileInEditorEvent: EventEmitter<any> = new EventEmitter();
+	public openBrowserEvent: EventEmitter<any> = new EventEmitter();
 	public constructor(public _http: Http){
 		this.userData = {
 			"file_system": {

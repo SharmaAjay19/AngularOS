@@ -83,4 +83,8 @@ export class DesktopComponent {
   hideContextMenu(){
   	this.showContextMenu = false;
   }
+
+  openBrowser(){
+    this.commonDataService.openBrowserEvent.emit("");
+  }
 }
