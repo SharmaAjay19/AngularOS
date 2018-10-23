@@ -114,7 +114,7 @@
 </div>
 
 <div class="desktop">
-  <div class="file">
+  <div class="file" (dblclick)="openFileInEditor(file.fileid)" *ngFor="let file of commonDataService.currentPathFiles">
 	<div style="display:block;">
 		<img src="https://4vector.com/i/free-vector-text-file-icon_101919_Text_File_Icon.png" height="50px" width="50px">
 	</div>
@@ -124,7 +124,8 @@
     white-space: nowrap;
     width: 50px;
     color: white;">
-    	<span>File1Helleluah.txt</span>
+    	<span>{{file.filename}}</span>
     </div>
   </div>
 </div>
+<app-text-editor></app-text-editor>

@@ -17,12 +17,16 @@ export class DesktopComponent {
   	});
 
   	this.commonDataService.currentPathChangedEvent.subscribe(res => {
-  		this.commonDataService.currentPathFiles = this.commonDataService.userData["file_system"].filter(file => file.path === this.commonDataService.currentPath);
+  		this.commonDataService.refreshCurrentPathFiles();
   	});
   }
 
+  openFileInEditor(fileid){
+  	this.commonDataService.openFileInEditorEvent.emit(fileid);
+  }
 
   ngOnInit(){
+  	this.commonDataService.refreshCurrentPathFiles();
 	$(function() {
 
 		setInterval(function() {
