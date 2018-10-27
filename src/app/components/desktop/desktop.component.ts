@@ -11,7 +11,7 @@ declare var $ : any;
 export class DesktopComponent {
   showContextMenu: boolean = false;
 
-  public constructor(private commonDataService: CommonDataService){
+  public constructor(public commonDataService: CommonDataService){
   	this.commonDataService.contextMenuSelectEvent.subscribe(res => {
   		this.hideContextMenu();
   	});

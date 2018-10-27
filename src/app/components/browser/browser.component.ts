@@ -24,7 +24,7 @@ export class BrowserComponent {
     pageTitle: string = "Angular Browser";
     pageUrl: SafeResourceUrl;
     urlInput: string = "";
-    public constructor(private commonDataService: CommonDataService,
+    public constructor(public commonDataService: CommonDataService,
                        private _sanitizationService: DomSanitizer){
       this.commonDataService.openBrowserEvent.subscribe(url => {
         if (url){

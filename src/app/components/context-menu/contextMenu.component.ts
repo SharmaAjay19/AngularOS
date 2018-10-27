@@ -10,7 +10,7 @@ declare var $ : any;
 })
 export class ContextMenuComponent {
 	menuItems: any[] = [];
-	public constructor(private commonDataService: CommonDataService){}
+	public constructor(public commonDataService: CommonDataService){}
 
 	ngOnInit(){
 		this.menuItems = [

@@ -23,7 +23,7 @@ export class TextEditorComponent {
 	editorOpen: boolean = false;
 	editorConfig: any;
 
-	public constructor(private commonDataService: CommonDataService){
+	public constructor(public commonDataService: CommonDataService){
 		this.commonDataService.openFileInEditorEvent.subscribe(fileid => {
 			var f = this.commonDataService.userData["file_system"]["files"].find(fil => fil.fileid===fileid);
 			this.file = f;
