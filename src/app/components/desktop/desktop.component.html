@@ -5,6 +5,9 @@
   </div>
 
   <div class="right">
+    <i class="fa fa-upload" (click)="openUploader()"></i>
+    <i class="fa fa-download" (click)="downloadUserData()"></i>
+    <a id="downloadAnchorElem" style="display:none"></a>
     <i class="fa fa-wifi fa-fw"></i>
     <i class="language">En</i>
     <i class="fa fa-battery-full fa-fw"></i>
@@ -35,6 +38,10 @@
 
   <span data-toggle="tooltip" title="Terminal">
     <i class="fa fa-terminal"></i>
+  </span>
+
+  <span data-toggle="tooltip" title="Audio Player" (click)="commonDataService.openAudioPlayerEvent.emit(true)">
+    <i class="fa fa-youtube-play"></i>
   </span>
 </div>
 
@@ -130,3 +137,5 @@
 </div>
 <app-text-editor></app-text-editor>
 <app-browser></app-browser>
+<app-audio-player></app-audio-player>
+<app-fileupload></app-fileupload>

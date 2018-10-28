@@ -1,0 +1,13 @@
+<div *ngIf="showFileUpload" class="fileUpload" ngDraggable [handle]="FileUploadHeader">
+	<div #FileUploadHeader class="fileUploadHeader">
+		<span>File Upload</span>
+		<!--<input type="text" name="fileUrl" class="fileUrl" [(ngModel)]="urlInput" (keyup.enter)="loadUrl()">-->
+	</div>
+	<div class="fileUploadSection">
+		<file-drop headertext="{{fileName? fileName: 'Drop file here'}}" (onFileDrop)="dropped($event)">
+      	</file-drop>
+      	<span style="display:block">FileName: {{fileName? fileName: 'None'}}</span>
+      	<span style="display:block">FileSize: {{fileSize? fileSize: 'None'}}</span>
+    	<button style="color:black;background-color: white;border: 1px solid black" (click)="saveFile()">Add</button>
+	</div>
+</div>

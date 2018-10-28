@@ -21,6 +21,10 @@ export class DesktopComponent {
   	});
   }
 
+  openUploader(){
+    this.commonDataService.openFileUploaderEvent.emit(true);
+  }
+
   openFileInEditor(fileid){
   	this.commonDataService.openFileInEditorEvent.emit(fileid);
   }
@@ -86,5 +90,13 @@ export class DesktopComponent {
 
   openBrowser(){
     this.commonDataService.openBrowserEvent.emit("");
+  }
+
+  downloadUserData(){
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.commonDataService.userData));
+    var dlAnchorElem = document.getElementById('downloadAnchorElem');
+    dlAnchorElem.setAttribute("href",     dataStr     );
+    dlAnchorElem.setAttribute("download", "userData.json");
+    dlAnchorElem.click();
   }
 }

@@ -1,0 +1,18 @@
+<div *ngIf="showAudioPlayer" class="audioPlayer" ngDraggable [handle]="AudioPlayerHeader">
+	<div #AudioPlayerHeader class="AudioPlayerHeader">
+		<span>Audio Player</span>
+		<input type="text" name="audioUrl" class="audioUrl" [(ngModel)]="urlInput" (keyup.enter)="loadUrl()">
+	</div>
+	<div class="audioPlayerSection">
+		<audio controls id="audio">
+			<source [src]="audioSource" id="audioSource" type="audio/mp3">
+			Your browser does not support the audio element.
+		</audio>
+		<button style="color:black;background-color: white;border: 1px solid black" (click)="saveAudio()">Add</button>
+	</div>
+	<div class="audioListSection">
+		<div *ngFor="let item of audioFiles" class="audioListItem" (click)="playSong(item)">
+			<span>{{item.filename}}</span>
+		</div>
+	</div>
+</div>

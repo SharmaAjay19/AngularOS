@@ -6,11 +6,14 @@ import {HttpClientModule} from '@angular/common/http';
 import { NgxEditorModule } from 'ngx-editor';
 import {FormsModule} from '@angular/forms';
 import { AngularDraggableModule } from 'angular2-draggable';
+import { FileDropModule } from 'ngx-file-drop';
 
 import {DesktopComponent} from './components/desktop/desktop.component';
 import {ContextMenuComponent} from './components/context-menu/contextMenu.component';
 import {TextEditorComponent} from './components/text-editor/textEditor.component';
 import {BrowserComponent} from './components/browser/browser.component';
+import {AudioPlayerComponent} from './components/audio-player/audioPlayer.component';
+import {FileUploadComponent} from './components/file-upload/fileUpload.component';
 import { AppComponent } from './app.component';
 
 import {CommonDataService} from './services/commonData.service';
@@ -22,7 +25,9 @@ import {CommonDataService} from './services/commonData.service';
     DesktopComponent,
     ContextMenuComponent,
     TextEditorComponent,
-    BrowserComponent
+    BrowserComponent,
+    AudioPlayerComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,8 @@ import {CommonDataService} from './services/commonData.service';
     HttpModule,
     NgxEditorModule,
     FormsModule,
-    AngularDraggableModule
+    AngularDraggableModule,
+    FileDropModule
   ],
   providers: [CommonDataService],
   bootstrap: [AppComponent]
