@@ -14,6 +14,7 @@ import {TextEditorComponent} from './components/text-editor/textEditor.component
 import {BrowserComponent} from './components/browser/browser.component';
 import {AudioPlayerComponent} from './components/audio-player/audioPlayer.component';
 import {FileUploadComponent} from './components/file-upload/fileUpload.component';
+import {FileExplorerComponent} from './components/file-explorer/fileExplorer.component';
 import { AppComponent } from './app.component';
 
 import {CommonDataService} from './services/commonData.service';
@@ -27,7 +28,8 @@ import {CommonDataService} from './services/commonData.service';
     TextEditorComponent,
     BrowserComponent,
     AudioPlayerComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    FileExplorerComponent
   ],
   imports: [
     BrowserModule,

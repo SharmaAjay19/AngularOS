@@ -16,6 +16,7 @@ export class CommonDataService {
 	public openBrowserEvent: EventEmitter<any> = new EventEmitter();
 	public openAudioPlayerEvent: EventEmitter<any> = new EventEmitter();
 	public openFileUploaderEvent: EventEmitter<any> = new EventEmitter();
+	public openFileExplorerEvent: EventEmitter<any> = new EventEmitter();
 	public constructor(public _http: Http){
 		this.userData = {
 			"file_system": {

@@ -24,7 +24,7 @@
     <img src="/assets/img/logo-ubuntu_cof-orange-hex.svg.png">
   </button>
 
-  <span data-toggle="tooltip" title="Files">
+  <span data-toggle="tooltip" title="Files" (click)="commonDataService.openFileExplorerEvent.emit(true)">
     <i class="fa fa-folder"></i>
   </span>
 
@@ -139,3 +139,4 @@
 <app-browser></app-browser>
 <app-audio-player></app-audio-player>
 <app-fileupload></app-fileupload>
+<app-file-explorer></app-file-explorer>
