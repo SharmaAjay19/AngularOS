@@ -1,7 +1,7 @@
 <div *ngIf="editorOpen" class="textEditor" ngDraggable [handle]="EditorHeader">
 	<div #EditorHeader class="textEditorHeader"><span>{{file.filename}}</span></div>
 	<div class="editorSection">
-		<app-ngx-editor [config]="editorConfig" [placeholder]="" [spellcheck]="true" [(ngModel)]="file.content"></app-ngx-editor>
+		<app-ngx-editor [config]="editorConfig" [placeholder]="" [spellcheck]="true" [(ngModel)]="editorContent"></app-ngx-editor>
 	</div>
 	<!--<div class="textEditorFooter"></div>-->
 </div>

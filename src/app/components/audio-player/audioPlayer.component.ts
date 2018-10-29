@@ -33,6 +33,10 @@ export class AudioPlayerComponent {
           }
         }
       });
+
+      this.commonDataService.refreshSystemDataEvent.subscribe(evt => {
+        this.refreshAudioFileList();
+      });
     }
 
     refreshAudioFileList(){

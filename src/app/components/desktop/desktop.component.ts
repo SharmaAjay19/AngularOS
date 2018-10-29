@@ -74,8 +74,6 @@ export class DesktopComponent {
         document.addEventListener('contextmenu', function(e) {
             self.showContextMenu = true;
             var menu = document.getElementById("contextMenu");
-            console.log(menu);
-            console.log(e.pageX + "-" + e.pageY);
             if (menu){
             	menu.setAttribute("style", "top: " + e.pageY + "px; left: " + e.pageX + "px;");
             }

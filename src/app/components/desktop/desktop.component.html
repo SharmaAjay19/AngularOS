@@ -1,4 +1,4 @@
-<app-context-menu (clickOutside)="hideContextMenu()" [style.display]="showContextMenu? 'block': 'none'"></app-context-menu>
+<app-context-menu *ngIf="commonDataService.featureFlags.contextMenu" (clickOutside)="hideContextMenu()" [style.display]="showContextMenu? 'block': 'none'"></app-context-menu>
 <div class="nav">
   <div class="left">
     Ubuntu Desktop
@@ -135,8 +135,8 @@
     </div>
   </div>
 </div>
-<app-text-editor></app-text-editor>
-<app-browser></app-browser>
-<app-audio-player></app-audio-player>
-<app-fileupload></app-fileupload>
-<app-file-explorer></app-file-explorer>
+<app-text-editor *ngIf="commonDataService.featureFlags.textEditor"></app-text-editor>
+<app-browser *ngIf="commonDataService.featureFlags.browser"></app-browser>
+<app-audio-player *ngIf="commonDataService.featureFlags.audioPlayer"></app-audio-player>
+<app-fileupload *ngIf="commonDataService.featureFlags.fileUpload"></app-fileupload>
+<app-file-explorer *ngIf="commonDataService.featureFlags.fileExplorer"></app-file-explorer>

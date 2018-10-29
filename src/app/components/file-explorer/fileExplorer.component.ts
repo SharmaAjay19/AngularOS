@@ -19,10 +19,17 @@ export class FileExplorerComponent {
     }
 
     showExplorer: boolean = false;
+    folders: any[] = [];
     public constructor(public commonDataService: CommonDataService){
       this.commonDataService.openFileExplorerEvent.subscribe(data => {
         this.showExplorer = !this.showExplorer;
+        this.refreshFileExplorerData();
       });
+    }
+
+    refreshFileExplorerData(){
+      var allf = Array.from(new Set(this.commonDataService.userData["file_system"]["files"].map(x => x.path)));
+      this.folders = allf.map((x: string) => x.replace("/home/__user__/", "").replace("/", ""));
     }
 
     ngOnInit(){

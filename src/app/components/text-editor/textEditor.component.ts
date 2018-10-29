@@ -11,22 +11,29 @@ declare var $ : any;
 export class TextEditorComponent {
 
   	ESCAPE_KEYCODE = 27;
+  	S_KEYCODE = 83;
 
   	@HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+  		if (event.ctrlKey && event.keyCode === this.S_KEYCODE){
+  			this.saveFile();
+  			event.preventDefault();
+  		}
 	    if (event.keyCode === this.ESCAPE_KEYCODE) {
 	      this.editorOpen = false;
-	      this.file = null;
+	      this.reset();
 	    }
   	}
 
-	file: any = {};
+  	file: any = {};
 	editorOpen: boolean = false;
 	editorConfig: any;
+	editorContent: string = "";
 
 	public constructor(public commonDataService: CommonDataService){
 		this.commonDataService.openFileInEditorEvent.subscribe(fileid => {
 			var f = this.commonDataService.userData["file_system"]["files"].find(fil => fil.fileid===fileid);
 			this.file = f;
+			this.editorContent = JSON.parse(JSON.stringify(this.file.contents));
 			this.openEditor();
 		});
 	}
@@ -37,10 +44,21 @@ export class TextEditorComponent {
 				"fileid": uuid(),
 				"filename": "New File.txt",
 				"path": this.commonDataService.currentPath,
-				"content": ""
+				"contents": ""
 			}
 		}
 		this.editorOpen = true;
+	}
+
+	saveFile(){
+		if (this.file){
+			this.file.contents = this.editorContent;
+		}
+	}
+
+	reset(){
+		this.file = null;
+		this.editorContent = "";
 	}
 
 	ngOnInit(){

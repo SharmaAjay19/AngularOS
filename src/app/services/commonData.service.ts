@@ -3,6 +3,16 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 @Injectable()
 export class CommonDataService {
+	//Feature Flags
+	public featureFlags = {
+		fileUpload: true,
+		textEditor: true,
+		fileExplorer: true,
+		contextMenu: true,
+		browser: false,
+		audioPlayer: true
+	};
+
 	//User-OS Context variables
 	public userProfile: any;
 	public currentPath: string = "/home/__user__/desktop/";
@@ -12,6 +22,7 @@ export class CommonDataService {
 	//Event Emitters
 	public currentPathChangedEvent: EventEmitter<any> = new EventEmitter();
 	public contextMenuSelectEvent: EventEmitter<any> = new EventEmitter();
+	public refreshSystemDataEvent: EventEmitter<any> = new EventEmitter();
 	public openFileInEditorEvent: EventEmitter<any> = new EventEmitter();
 	public openBrowserEvent: EventEmitter<any> = new EventEmitter();
 	public openAudioPlayerEvent: EventEmitter<any> = new EventEmitter();
@@ -36,6 +47,11 @@ export class CommonDataService {
 				]
 			}
 		};
+	}
+
+	refreshSystemData(data){
+		this.userData = data;
+		this.refreshSystemDataEvent.emit(true);
 	}
 
 	refreshCurrentPathFiles(){

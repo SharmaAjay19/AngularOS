@@ -1,7 +1,9 @@
 <div *ngIf="showExplorer" class="explorer" ngDraggable [handle]="ExplorerHeader">
 	<div #ExplorerHeader class="explorerHeader"><span>File Explorer</span></div>
 	<div class="explorerSection">
-		<div class="col-sm-3 explorerLeftPane"></div>
+		<div class="col-sm-3 explorerLeftPane">
+			<span *ngFor="let folder of folders" style="display:block">{{folder}}</span>
+		</div>
 		<div class="col-sm-9 explorerRightPane"></div>
 	</div>
 </div>
