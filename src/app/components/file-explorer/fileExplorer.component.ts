@@ -14,8 +14,19 @@ export class FileExplorerComponent {
 
     @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
         if (event.keyCode === this.ESCAPE_KEYCODE) {
-          this.showExplorer = false;
+          /*if (this.showExplorer){
+            this.showExplorer = false;
+            this.reset();
+          }*/
         }
+    }
+
+    closeWindow(){
+      if (this.showExplorer){
+        console.log("HELLO");
+        this.showExplorer = false;
+        this.reset();
+      }
     }
 
     showExplorer: boolean = false;
@@ -25,11 +36,29 @@ export class FileExplorerComponent {
         this.showExplorer = !this.showExplorer;
         this.refreshFileExplorerData();
       });
+
+      this.commonDataService.fileUploadedEvent.subscribe(data => {
+        this.refreshFileExplorerData();
+      });
+
+      this.commonDataService.refreshSystemDataEvent.subscribe(data => {
+        this.closeWindow();
+      });
     }
 
     refreshFileExplorerData(){
       var allf = Array.from(new Set(this.commonDataService.userData["file_system"]["files"].map(x => x.path)));
       this.folders = allf.map((x: string) => x.replace("/home/__user__/", "").replace("/", ""));
+    }
+
+    displayFolder(folder){
+      this.commonDataService.currentPath = "/home/__user__/" + folder + "/";
+      this.commonDataService.refreshCurrentPathFiles();
+    }
+
+    reset(){
+      this.commonDataService.currentPath = "/home/__user__/desktop/";
+      this.commonDataService.refreshCurrentPathFiles();
     }
 
     ngOnInit(){

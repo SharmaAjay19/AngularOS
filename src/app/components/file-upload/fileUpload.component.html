@@ -1,6 +1,7 @@
-<div *ngIf="showFileUpload" class="fileUpload" ngDraggable [handle]="FileUploadHeader">
+<div [style.display]="showFileUpload? '': 'none'" class="fileUpload bringToFront" ngDraggable [handle]="FileUploadHeader">
 	<div #FileUploadHeader class="fileUploadHeader">
 		<span>File Upload</span>
+		<i class="fa fa-close" style="float:right;" (click)="closeWindow()"></i>
 		<!--<input type="text" name="fileUrl" class="fileUrl" [(ngModel)]="urlInput" (keyup.enter)="loadUrl()">-->
 	</div>
 	<div class="fileUploadSection">
@@ -9,5 +10,6 @@
       	<span style="display:block">FileName: {{fileName? fileName: 'None'}}</span>
       	<span style="display:block">FileSize: {{fileSize? fileSize: 'None'}}</span>
     	<button style="color:black;background-color: white;border: 1px solid black" (click)="saveFile()">Add</button>
+    	<button style="color:black;background-color: white;border: 1px solid black" (click)="setAsHome()">Set as Home File</button>
 	</div>
 </div>

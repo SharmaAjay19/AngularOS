@@ -23,6 +23,7 @@ export class CommonDataService {
 	public currentPathChangedEvent: EventEmitter<any> = new EventEmitter();
 	public contextMenuSelectEvent: EventEmitter<any> = new EventEmitter();
 	public refreshSystemDataEvent: EventEmitter<any> = new EventEmitter();
+	public fileUploadedEvent: EventEmitter<any> = new EventEmitter();
 	public openFileInEditorEvent: EventEmitter<any> = new EventEmitter();
 	public openBrowserEvent: EventEmitter<any> = new EventEmitter();
 	public openAudioPlayerEvent: EventEmitter<any> = new EventEmitter();

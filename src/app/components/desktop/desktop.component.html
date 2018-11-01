@@ -121,9 +121,9 @@
 </div>
 
 <div class="desktop">
-  <div class="file" (dblclick)="openFileInEditor(file.fileid)" *ngFor="let file of commonDataService.currentPathFiles">
+  <div class="file" (dblclick)="openFileInEditor(file.fileid)" *ngFor="let file of desktopFiles">
 	<div style="display:block;">
-		<img src="https://4vector.com/i/free-vector-text-file-icon_101919_Text_File_Icon.png" height="50px" width="50px">
+		<img src="/assets/img/TextFileIcon.png" height="50px" width="50px">
 	</div>
 	<div style="
     overflow: hidden;
@@ -131,7 +131,7 @@
     white-space: nowrap;
     width: 50px;
     color: white;">
-    	<span>{{file.filename}}</span>
+    	<span>{{file?.filename}}</span>
     </div>
   </div>
 </div>

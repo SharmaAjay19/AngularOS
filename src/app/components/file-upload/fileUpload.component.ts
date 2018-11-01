@@ -15,18 +15,26 @@ export class FileUploadComponent {
 
     @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
         if (event.keyCode === this.ESCAPE_KEYCODE) {
-          this.showFileUpload = false;
+          //this.showFileUpload = false;
         }
+    }
+
+    closeWindow(){
+      this.showFileUpload = false;
+      this.reset();
     }
 
     showFileUpload: boolean = false;
     urlInput: string = "";
     public constructor(public commonDataService: CommonDataService){
       this.commonDataService.openFileUploaderEvent.subscribe(data => {
-        console.log(data);
         if (data){
           this.showFileUpload = !this.showFileUpload;
         }
+      });
+
+      this.commonDataService.refreshSystemDataEvent.subscribe(data => {
+        this.closeWindow();
       });
     }
 
@@ -37,6 +45,10 @@ export class FileUploadComponent {
 
     }
 
+    setAsHome(){
+      this.commonDataService.refreshSystemData(JSON.parse(this.fileContent));
+    }
+
     saveFile(){
       var newFile = {
         "fileid": uuid(),
@@ -45,10 +57,15 @@ export class FileUploadComponent {
         "contents": this.fileContent
       };
       this.commonDataService.userData["file_system"]["files"].push(newFile);
+      this.reset();
+      this.commonDataService.fileUploadedEvent.emit(true);
+      this.commonDataService.refreshCurrentPathFiles();
+    }
+
+    reset(){
       this.fileName = null;
       this.fileSize = null;
-      this.fileContent = null;
-      this.commonDataService.refreshCurrentPathFiles();
+      this.fileContent = null;      
     }
 
     //FILE DROP CODE

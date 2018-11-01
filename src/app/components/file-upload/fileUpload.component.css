@@ -20,7 +20,6 @@
     cursor: pointer;
     box-shadow: 0 0 10px #000;
     background-color: #514F48;
-    z-index: 10;
 }
 
 .fileUrl{
@@ -32,14 +31,12 @@
 	position: relative;
 	width: 100%;
 	height: 20px;
-	z-index: 10;
 	cursor: pointer;
 	background-color: #FFF0F5;
 }
 
 .fileUploadSection{
 	position: relative;
-    z-index: 10;
     background-color: white;
     width: 100%;
     height: 100%;

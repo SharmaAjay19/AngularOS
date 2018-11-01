@@ -15,8 +15,20 @@ export class AudioPlayerComponent {
 
     @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
         if (event.keyCode === this.ESCAPE_KEYCODE) {
-          this.showAudioPlayer = false;
+          //this.showAudioPlayer = false;
         }
+    }
+
+    closeWindow(){
+      this.stopPlaying();
+      this.showAudioPlayer = false;
+      this.reset();
+    }
+
+    reset(){
+      this.urlInput = "";
+      this.audioSource = null;
+      this.audioFiles = [];
     }
 
     showAudioPlayer: boolean = false;
@@ -35,6 +47,7 @@ export class AudioPlayerComponent {
       });
 
       this.commonDataService.refreshSystemDataEvent.subscribe(evt => {
+        this.closeWindow();
         this.refreshAudioFileList();
       });
     }
@@ -76,5 +89,11 @@ export class AudioPlayerComponent {
       source.src = item.contents;
       audio.load(); //call this to just preload the audio without playing
       audio.play();
+    }
+
+    stopPlaying(){
+      var audio = document.getElementById('audio') as HTMLAudioElement;
+      if (!audio.paused)
+        audio.pause();
     }
 }

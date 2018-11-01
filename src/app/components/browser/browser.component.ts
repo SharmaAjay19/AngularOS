@@ -15,9 +15,18 @@ export class BrowserComponent {
 
     @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
         if (event.keyCode === this.ESCAPE_KEYCODE) {
-          this.showBrowser = false;
-          this.pageUrl = "https://www.google.com";
-        }
+          /*if (this.showBrowser){
+            this.showBrowser = false;
+            this.pageUrl = "https://www.google.com";
+          }*/
+      }
+    }
+
+    closeWindow(){
+      if (this.showBrowser){
+        this.showBrowser = false;
+        this.pageUrl = "https://www.google.com";
+      }
     }
 
     showBrowser: boolean = false;
@@ -34,7 +43,10 @@ export class BrowserComponent {
           this.pageUrl = this.sanitizeUrl("https://www.google.com");
         }
         this.showBrowser = true;
-        console.log(this.pageUrl);
+      });
+
+      this.commonDataService.refreshSystemDataEvent.subscribe(data => {
+        this.closeWindow();
       });
     }
 
@@ -53,7 +65,6 @@ export class BrowserComponent {
       else{
         this.pageUrl = this.sanitizeUrl("https://www.google.com");
       }
-      console.log(this.pageUrl);
     }
 
 }

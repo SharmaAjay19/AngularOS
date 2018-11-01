@@ -19,9 +19,18 @@ export class TextEditorComponent {
   			event.preventDefault();
   		}
 	    if (event.keyCode === this.ESCAPE_KEYCODE) {
-	      this.editorOpen = false;
-	      this.reset();
+	    	/*if (this.editorOpen){
+	      		this.editorOpen = false;
+	      		this.reset();
+	  		}*/
 	    }
+  	}
+
+  	closeWindow(){
+  		if (this.editorOpen){
+	  		this.editorOpen = false;
+	  		this.reset();
+	  	}
   	}
 
   	file: any = {};
@@ -35,6 +44,10 @@ export class TextEditorComponent {
 			this.file = f;
 			this.editorContent = JSON.parse(JSON.stringify(this.file.contents));
 			this.openEditor();
+		});
+
+		this.commonDataService.refreshSystemDataEvent.subscribe(data => {
+			this.closeWindow();
 		});
 	}
 

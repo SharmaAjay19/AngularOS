@@ -1,7 +1,8 @@
-<div *ngIf="showAudioPlayer" class="audioPlayer" ngDraggable [handle]="AudioPlayerHeader">
+<div [style.display]="showAudioPlayer? '': 'none'" class="audioPlayer bringToFront" ngDraggable [handle]="AudioPlayerHeader">
 	<div #AudioPlayerHeader class="AudioPlayerHeader">
 		<span>Audio Player</span>
 		<input type="text" name="audioUrl" class="audioUrl" [(ngModel)]="urlInput" (keyup.enter)="loadUrl()">
+		<i class="fa fa-close" style="float:right;" (click)="closeWindow()"></i>
 	</div>
 	<div class="audioPlayerSection">
 		<audio controls id="audio">
