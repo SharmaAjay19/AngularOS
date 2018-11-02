@@ -5,7 +5,7 @@
 	</div>
 	<div class="explorerSection">
 		<div class="col-sm-2 explorerLeftPane">
-			<span *ngFor="let folder of folders" style="display:block;width:100%;background-color:#ffe4c4;color:black;font-style:bold;cursor:pointer;border:1px solid #cdb79e" (click)="displayFolder(folder)">{{folder}}</span>
+			<span *ngFor="let folder of folders" class="left-pane-folder" (click)="displayFolder(folder)">{{folder}}</span>
 		</div>
 		<div class="col-sm-10 explorerRightPane">
 			<div *ngFor="let file of commonDataService.currentPathFiles" style="display:inline" (dblclick)="commonDataService.openFileInEditorEvent.emit(file.fileid)">

@@ -6,6 +6,8 @@
     border: 1px solid;
     width: 60%;
     height: 70%;
+    resize: both;
+    overflow: auto;
 }
 
 .explorerHeader{
@@ -38,4 +40,11 @@
 .explorerRightPane{
     height:100%;
     position: relative;
+}
+
+.left-pane-folder{
+    display:block;width:100%;background-color:#ffe4c4;color:black;font-style:bold;cursor:pointer;border:1px solid #cdb79e;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

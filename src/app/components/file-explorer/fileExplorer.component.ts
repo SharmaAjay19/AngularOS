@@ -23,7 +23,6 @@ export class FileExplorerComponent {
 
     closeWindow(){
       if (this.showExplorer){
-        console.log("HELLO");
         this.showExplorer = false;
         this.reset();
       }
