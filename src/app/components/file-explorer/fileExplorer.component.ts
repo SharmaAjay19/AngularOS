@@ -61,5 +61,18 @@ export class FileExplorerComponent {
     }
 
     ngOnInit(){
+      var self = this;
+      $('.contextmenu-clickable').on('contextmenu', function(e){
+        self.commonDataService.showContextMenu = true;
+        var menu = document.getElementById("contextMenu");
+        if (menu){
+          menu.setAttribute("style", "top: " + e.pageY + "px; left: " + e.pageX + "px;");
+        }
+        e.preventDefault();
+      });
+
+      $('.selectable').on('click', function(){
+        $(this).css("background", "cyan");
+      });
     }
 }

@@ -19,6 +19,9 @@ export class CommonDataService {
 	public currentPathFiles: any[] = [];
 	public userData: any = {};
 
+	//HIDE SHOW FLAGS
+	public showContextMenu: boolean = false;
+
 	//Event Emitters
 	public currentPathChangedEvent: EventEmitter<any> = new EventEmitter();
 	public contextMenuSelectEvent: EventEmitter<any> = new EventEmitter();

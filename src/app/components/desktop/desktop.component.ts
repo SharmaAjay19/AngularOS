@@ -9,7 +9,6 @@ declare var $ : any;
   styleUrls: ['./desktop.component.css']
 })
 export class DesktopComponent {
-  showContextMenu: boolean = false;
   desktopFiles: any[] = [];
   currentPath: string = "/home/__user__/desktop/";
   public constructor(public commonDataService: CommonDataService){
@@ -75,7 +74,15 @@ export class DesktopComponent {
   	    
     	});
     	var self = this;
-    	if (document.addEventListener) { // IE >= 9; other browsers
+      $('.contextmenu-clickable').on('contextmenu', function(e){
+        self.commonDataService.showContextMenu = true;
+        var menu = document.getElementById("contextMenu");
+        if (menu){
+          menu.setAttribute("style", "top: " + e.pageY + "px; left: " + e.pageX + "px;");
+        }
+        e.preventDefault();
+      });
+    	/*if (document.addEventListener) { // IE >= 9; other browsers
           document.addEventListener('contextmenu', function(e) {
               self.showContextMenu = true;
               var menu = document.getElementById("contextMenu");
@@ -84,7 +91,7 @@ export class DesktopComponent {
               }
               e.preventDefault();
           }, false);
-      }
+      }*/
       
       setTimeout(() =>
       {
@@ -104,7 +111,7 @@ export class DesktopComponent {
   }
 
   hideContextMenu(){
-  	this.showContextMenu = false;
+  	this.commonDataService.showContextMenu = false;
   }
 
   openBrowser(){

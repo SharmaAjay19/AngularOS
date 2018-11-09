@@ -1,4 +1,4 @@
-<app-context-menu *ngIf="commonDataService.featureFlags.contextMenu" (clickOutside)="hideContextMenu()" [style.display]="showContextMenu? 'block': 'none'"></app-context-menu>
+<app-context-menu *ngIf="commonDataService.featureFlags.contextMenu" (clickOutside)="hideContextMenu()" [style.display]="commonDataService.showContextMenu? 'block': 'none'"></app-context-menu>
 <div class="nav">
   <div class="left">
     Ubuntu Desktop
@@ -120,8 +120,8 @@
   </div>	
 </div>
 
-<div class="desktop">
-  <div class="file" (dblclick)="openFileInEditor(file.fileid)" *ngFor="let file of desktopFiles">
+<div class="desktop contextmenu-clickable">
+  <div class="file contextmenu-clickable" (dblclick)="openFileInEditor(file.fileid)" *ngFor="let file of desktopFiles">
 	<div style="display:block;">
 		<img src="/assets/img/TextFileIcon.png" height="50px" width="50px">
 	</div>

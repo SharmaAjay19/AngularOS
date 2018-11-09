@@ -3,7 +3,8 @@
 	font-color: black;
 	width: 200px;
 	position: absolute;
-	z-index: 10;
+	z-index: 30;
+	border: 1px solid gray;
 }
 
 .context-menu-item{

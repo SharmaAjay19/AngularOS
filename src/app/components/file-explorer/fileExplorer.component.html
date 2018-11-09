@@ -7,8 +7,8 @@
 		<div class="col-sm-2 explorerLeftPane">
 			<span *ngFor="let folder of folders" class="left-pane-folder" (click)="displayFolder(folder)">{{folder}}</span>
 		</div>
-		<div class="col-sm-10 explorerRightPane">
-			<div *ngFor="let file of commonDataService.currentPathFiles" style="display:inline" (dblclick)="commonDataService.openFileInEditorEvent.emit(file.fileid)">
+		<div class="col-sm-10 explorerRightPane contextmenu-clickable">
+			<div *ngFor="let file of commonDataService.currentPathFiles" class="contextmenu-clickable selectable" style="display:inline" (dblclick)="commonDataService.openFileInEditorEvent.emit(file.fileid)">
 				<div style="display:block;">
 					<img src="/assets/img/TextFileIcon.png" height="50px" width="50px">
 				</div>
