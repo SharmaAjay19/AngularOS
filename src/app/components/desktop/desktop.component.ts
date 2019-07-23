@@ -30,7 +30,7 @@ export class DesktopComponent {
   }
 
   refreshDesktop(){
-    this.desktopFiles = this.commonDataService.userData["file_system"]["files"].filter(file => file.path === this.currentPath);
+    this.desktopFiles = this.commonDataService.userData.files.filter(file => file.path === this.currentPath);
   }
 
   ngOnInit(){

@@ -36,7 +36,7 @@ export class ContextMenuComponent {
 	menuItemClick(item){
 		this.commonDataService.contextMenuSelectEvent.emit(item);
 		if (item.action==="new"){
-			this.commonDataService.userData["file_system"]["files"].push({
+			this.commonDataService.userData.files.push({
 						"fileid": uuid(),
 						"filename": "New File.txt",
 						"path": this.commonDataService.currentPath,

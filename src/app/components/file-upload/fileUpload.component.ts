@@ -56,7 +56,7 @@ export class FileUploadComponent {
         "path": "/home/__user__/uploads/",
         "contents": this.fileContent
       };
-      this.commonDataService.userData["file_system"]["files"].push(newFile);
+      this.commonDataService.userData.files.push(newFile);
       this.reset();
       this.commonDataService.fileUploadedEvent.emit(true);
       this.commonDataService.refreshCurrentPathFiles();

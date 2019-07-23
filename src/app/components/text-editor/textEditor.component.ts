@@ -40,7 +40,7 @@ export class TextEditorComponent {
 
 	public constructor(public commonDataService: CommonDataService){
 		this.commonDataService.openFileInEditorEvent.subscribe(fileid => {
-			var f = this.commonDataService.userData["file_system"]["files"].find(fil => fil.fileid===fileid);
+			var f = this.commonDataService.userData.files.find(fil => fil.fileid===fileid);
 			this.file = f;
 			this.editorContent = JSON.parse(JSON.stringify(this.file.contents));
 			this.openEditor();

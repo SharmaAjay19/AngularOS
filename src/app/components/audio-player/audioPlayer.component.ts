@@ -53,7 +53,7 @@ export class AudioPlayerComponent {
     }
 
     refreshAudioFileList(){
-      this.audioFiles = this.commonDataService.userData["file_system"]["files"].filter(x => x.path==="/home/__user__/music/");
+      this.audioFiles = this.commonDataService.userData.files.filter(x => x.path==="/home/__user__/music/");
     }
 
     sanitizeUrl(url){
@@ -79,7 +79,7 @@ export class AudioPlayerComponent {
         "path": "/home/__user__/music/",
         "contents": this.audioSource
       };
-      this.commonDataService.userData["file_system"]["files"].push(newFile);
+      this.commonDataService.userData.files.push(newFile);
       this.refreshAudioFileList();
     }
 

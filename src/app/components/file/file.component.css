@@ -1,0 +1,7 @@
+.filename{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 50px;
+    color: black;
+}

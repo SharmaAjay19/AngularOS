@@ -46,7 +46,7 @@ export class FileExplorerComponent {
     }
 
     refreshFileExplorerData(){
-      var allf = Array.from(new Set(this.commonDataService.userData["file_system"]["files"].map(x => x.path)));
+      var allf = Array.from(new Set(this.commonDataService.userData.files.map(x => x.path)));
       this.folders = allf.map((x: string) => x.replace("/home/__user__/", "").replace("/", ""));
     }
 

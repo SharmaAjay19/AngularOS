@@ -18,6 +18,7 @@ import {FileExplorerComponent} from './components/file-explorer/fileExplorer.com
 import { AppComponent } from './app.component';
 
 import {CommonDataService} from './services/commonData.service';
+import { FileComponent } from './components/file/file.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {CommonDataService} from './services/commonData.service';
     BrowserComponent,
     AudioPlayerComponent,
     FileUploadComponent,
-    FileExplorerComponent
+    FileExplorerComponent,
+    FileComponent
   ],
   imports: [
     BrowserModule,

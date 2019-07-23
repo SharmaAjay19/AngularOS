@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import {FileSystem, File} from '../models/filesystem';
 
 @Injectable()
 export class CommonDataService {
@@ -17,7 +18,7 @@ export class CommonDataService {
 	public userProfile: any;
 	public currentPath: string = "/home/__user__/desktop/";
 	public currentPathFiles: any[] = [];
-	public userData: any = {};
+	public userData: FileSystem;
 
 	//HIDE SHOW FLAGS
 	public showContextMenu: boolean = false;
@@ -34,22 +35,20 @@ export class CommonDataService {
 	public openFileExplorerEvent: EventEmitter<any> = new EventEmitter();
 	public constructor(public _http: Http){
 		this.userData = {
-			"file_system": {
-				"files" : [
-					{
-						"fileid": "",
-						"filename": "SherlockHolmes.txt",
-						"path": "/home/__user__/desktop/",
-						"contents": ""
-					},
-					{
-						"fileid": "",
-						"filename": "SherlockHolmes.txt",
-						"path": "/home/__user__/document/",
-						"contents": ""
-					}
-				]
-			}
+			"files" : [
+				{
+					"fileid": "",
+					"filename": "SherlockHolmes.txt",
+					"path": "/home/__user__/desktop/",
+					"contents": ""
+				},
+				{
+					"fileid": "",
+					"filename": "SherlockHolmes.txt",
+					"path": "/home/__user__/document/",
+					"contents": ""
+				}
+			]
 		};
 	}
 
@@ -59,7 +58,7 @@ export class CommonDataService {
 	}
 
 	refreshCurrentPathFiles(){
-		this.currentPathFiles = this.userData["file_system"]["files"].filter(file => file.path === this.currentPath);
+		this.currentPathFiles = this.userData.files.filter(file => file.path === this.currentPath);
 	}
 
 	public rangeQuery(body){
