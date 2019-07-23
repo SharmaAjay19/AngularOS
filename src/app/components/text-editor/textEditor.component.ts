@@ -9,10 +9,11 @@ declare var $ : any;
   styleUrls: ['./textEditor.component.css']
 })
 export class TextEditorComponent {
-
+	
   	ESCAPE_KEYCODE = 27;
   	S_KEYCODE = 83;
-
+	editorWidth = "700px";
+	editorHeight = "400px";
   	@HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
   		if (event.ctrlKey && event.keyCode === this.S_KEYCODE){
   			this.saveFile();
@@ -78,10 +79,10 @@ export class TextEditorComponent {
 		this.editorConfig = {
 		    "editable": true,
 		    "spellcheck": true,
-		    "height": "300px",
-		    "minHeight": "0",
-		    "width": (window.innerWidth - 50) + "px",
-		    "minWidth": "0",
+		    "height": this.editorHeight,
+		    "minHeight": window.innerHeight*0.3 + "px",
+		    "width": this.editorWidth,
+		    "minWidth": window.innerWidth*0.3 + "px",
 		    "translate": "yes",
 		    "enableToolbar": true,
 		    "showToolbar": true,

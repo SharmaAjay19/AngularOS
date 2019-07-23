@@ -1,4 +1,4 @@
-<div [style.display]="editorOpen? '': 'none'" class="textEditor bringToFront" ngDraggable [handle]="EditorHeader">
+<div [style.display]="editorOpen? '': 'none'" class="textEditor bringToFront" [style.width]="editorWidth" ngDraggable [ngResizable]="isResizable" [rzHandles]="'n,e,s,w'" [handle]="EditorHeader">
 	<div #EditorHeader class="textEditorHeader">
 		<span>{{file?.filename}}</span>
 		<i class="fa fa-close" style="float:right;" (click)="closeWindow()"></i>
