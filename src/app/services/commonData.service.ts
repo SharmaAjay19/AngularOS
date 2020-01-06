@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import {FileSystem, File} from '../models/filesystem';
+import { WindowData } from '../models/windowRendering';
 
 @Injectable()
 export class CommonDataService {
@@ -13,6 +14,7 @@ export class CommonDataService {
 		browser: false,
 		audioPlayer: true
 	};
+	public windows: WindowData[] = [];
 
 	//User-OS Context variables
 	public userProfile: any;

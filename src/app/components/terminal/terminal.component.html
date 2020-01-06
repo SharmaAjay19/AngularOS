@@ -1,0 +1,11 @@
+<div style="width:100%; height:100%; background-color:black;color:white;">
+  <div *ngFor="let log of logs" style="margin-left:2px;">
+    <div style="display:block;">
+      <span>{{log.cmdDir}}</span>&nbsp;>&nbsp;<span>{{log.cmdStr}}</span>
+    </div>
+    <div style="display:block;">{{log.cmdOut}}</div>
+  </div>
+  <div>
+    <span>{{currentDir}}</span>&nbsp;>&nbsp;<div style="display:inline-block;min-width:15px;" contenteditable="true" [textContent]="commandString" (input)="commandString=$event.target.textContent" (keyup.enter)="execute()"></div><div class="blink_me"></div>
+  </div>
+</div>

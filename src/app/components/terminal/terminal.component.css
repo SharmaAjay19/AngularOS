@@ -1,0 +1,11 @@
+.blink_me {
+    width: 10px;
+    height: 12px;
+    display: inline-block;
+    background-color: white;
+    animation: blinker 1s linear infinite;
+  }
+  
+  @keyframes blinker {  
+    50% { opacity: 0; }
+  }

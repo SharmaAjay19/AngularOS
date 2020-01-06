@@ -20,10 +20,10 @@ export class TextEditorComponent {
   			event.preventDefault();
   		}
 	    if (event.keyCode === this.ESCAPE_KEYCODE) {
-	    	/*if (this.editorOpen){
+	    	if (this.editorOpen){
 	      		this.editorOpen = false;
 	      		this.reset();
-	  		}*/
+	  		}
 	    }
   	}
 

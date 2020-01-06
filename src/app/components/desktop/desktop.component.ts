@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { CommonDataService } from '../../services/commonData.service';
-import { v4 as uuid } from 'uuid';
+import { WindowData, WindowRendering } from '../../models/windowRendering';
 
 declare var $ : any;
 @Component({
@@ -81,18 +81,7 @@ export class DesktopComponent {
           menu.setAttribute("style", "top: " + e.pageY + "px; left: " + e.pageX + "px;");
         }
         e.preventDefault();
-      });
-    	/*if (document.addEventListener) { // IE >= 9; other browsers
-          document.addEventListener('contextmenu', function(e) {
-              self.showContextMenu = true;
-              var menu = document.getElementById("contextMenu");
-              if (menu){
-              	menu.setAttribute("style", "top: " + e.pageY + "px; left: " + e.pageX + "px;");
-              }
-              e.preventDefault();
-          }, false);
-      }*/
-      
+      });      
       setTimeout(() =>
       {
         var classname = document.getElementsByClassName("bringToFront");
@@ -108,6 +97,8 @@ export class DesktopComponent {
           })(classname[i]);
         }
       }, 1000);
+
+      this.openTerminal();
   }
 
   hideContextMenu(){
@@ -116,6 +107,16 @@ export class DesktopComponent {
 
   openBrowser(){
     this.commonDataService.openBrowserEvent.emit("");
+  }
+
+  openTerminal(){
+    this.commonDataService.windows.push(
+      <WindowData>{
+        windowProperties: {
+          type: WindowRendering.Terminal
+        }
+      }
+    );
   }
 
   downloadUserData(){

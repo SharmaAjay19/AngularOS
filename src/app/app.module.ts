@@ -19,6 +19,10 @@ import { AppComponent } from './app.component';
 
 import {CommonDataService} from './services/commonData.service';
 import { FileComponent } from './components/file/file.component';
+import { TerminalComponent } from './components/terminal/terminal.component';
+import { WindowComponent } from './components/window/window.component';
+import { DynamicComponentComponent } from './components/dynamic-component/dynamic-component.component';
+import { WindowRenderBaseComponent } from './components/window-render-base/window-render-base.component';
 
 
 @NgModule({
@@ -31,8 +35,13 @@ import { FileComponent } from './components/file/file.component';
     AudioPlayerComponent,
     FileUploadComponent,
     FileExplorerComponent,
-    FileComponent
+    FileComponent,
+    TerminalComponent,
+    WindowComponent,
+    DynamicComponentComponent,
+    WindowRenderBaseComponent
   ],
+  entryComponents: [TerminalComponent],
   imports: [
     BrowserModule,
     ClickOutsideModule,

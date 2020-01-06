@@ -36,7 +36,7 @@
     <i class="fa fa-cog"></i>
   </span>
 
-  <span data-toggle="tooltip" title="Terminal">
+  <span data-toggle="tooltip" title="Terminal" (click)="openTerminal()">
     <i class="fa fa-terminal"></i>
   </span>
 
@@ -140,3 +140,4 @@
 <app-audio-player *ngIf="commonDataService.featureFlags.audioPlayer"></app-audio-player>
 <app-fileupload *ngIf="commonDataService.featureFlags.fileUpload"></app-fileupload>
 <app-file-explorer *ngIf="commonDataService.featureFlags.fileExplorer"></app-file-explorer>
+<app-window *ngFor="let window of commonDataService.windows" [windowData]="window"></app-window>

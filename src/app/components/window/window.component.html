@@ -1,0 +1,9 @@
+<div [style.display]="windowOpen? '': 'none'" class="window bringToFront" ngDraggable [handle]="WindowHeader">
+	<div #WindowHeader class="windowHeader">
+		<span>{{windowHeader}}</span>
+		<i class="fa fa-close" style="float:right;" (click)="closeWindow()"></i>
+	</div>
+	<div class="windowContent">
+    <dynamic-component [windowData]="windowData"></dynamic-component>
+	</div>
+</div>
