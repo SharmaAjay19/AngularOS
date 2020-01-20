@@ -36,12 +36,16 @@ export class ContextMenuComponent {
 	menuItemClick(item){
 		this.commonDataService.contextMenuSelectEvent.emit(item);
 		if (item.action==="new"){
-			this.commonDataService.userData.files.push({
-						"fileid": uuid(),
-						"filename": "New File.txt",
-						"path": this.commonDataService.currentPath,
-						"contents": ""
-					});
+			var currentPath = this.commonDataService.getPathNodeFromPath(this.commonDataService.currentPath);
+			var fileid = uuid();
+			var newFile = {
+				"type": "file",
+				"fileid": fileid,
+				"filename": "New File.txt",
+				"path": fileid,
+				"contents": ""
+			};
+			this.commonDataService.addFile(newFile, currentPath);
 			this.commonDataService.refreshCurrentPathFiles();
 		}
 	}

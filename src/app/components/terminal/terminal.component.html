@@ -6,6 +6,6 @@
     <div style="display:block;">{{log.cmdOut}}</div>
   </div>
   <div>
-    <span>{{currentDir}}</span>&nbsp;>&nbsp;<div style="display:inline-block;min-width:15px;" contenteditable="true" [textContent]="commandString" (input)="commandString=$event.target.textContent" (keyup.enter)="execute()"></div><div class="blink_me"></div>
+    <span>{{currentDir}}</span>&nbsp;>&nbsp;<div style="display:inline-block;min-width:15px;" contenteditable="true" #LiveCommand [textContent]="commandString" (input)="commandString=$event.target.textContent" (keyup.enter)="execute()"></div><div class="blink_me"></div>
   </div>
 </div>

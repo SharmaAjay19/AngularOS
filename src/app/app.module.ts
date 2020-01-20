@@ -23,6 +23,8 @@ import { TerminalComponent } from './components/terminal/terminal.component';
 import { WindowComponent } from './components/window/window.component';
 import { DynamicComponentComponent } from './components/dynamic-component/dynamic-component.component';
 import { WindowRenderBaseComponent } from './components/window-render-base/window-render-base.component';
+import { ControlService } from './services/control.service';
+import { CommandService } from './services/command.service';
 
 
 @NgModule({
@@ -52,7 +54,7 @@ import { WindowRenderBaseComponent } from './components/window-render-base/windo
     AngularDraggableModule,
     FileDropModule
   ],
-  providers: [CommonDataService],
+  providers: [CommonDataService, ControlService, CommandService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

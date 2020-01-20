@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonDataService } from '../../services/commonData.service';
+import { CommandService } from '../../services/command.service';
 
 @Component({
   selector: 'app-terminal',
@@ -8,25 +9,23 @@ import { CommonDataService } from '../../services/commonData.service';
 })
 export class TerminalComponent implements OnInit {
 
-  currentDir: string = "/home/__user__/desktop/";
+  currentDir: string = "root/home/__user__/desktop";
   logs: TerminalCommand[] = [];
   commandString: string = "";
-  constructor(public commonDataService: CommonDataService) { }
+  @ViewChild("LiveCommand") liveCommandDiv: ElementRef;
+  constructor(public commonDataService: CommonDataService,
+              public commandService: CommandService
+    ) { }
 
   ngOnInit() {
+    this.liveCommandDiv.nativeElement.focus();
   }
 
   execute(){
     var cmdStr = this.commandString.valueOf();
     this.logs.push(<TerminalCommand>({cmdStr: cmdStr, cmdOut: this.runCommand(cmdStr), cmdDir: this.currentDir.valueOf()}));
     this.commandString = "";
-  }
-
-  listCurrentDir(): string{
-    if (this.currentDir && this.currentDir.length>0){
-      return this.commonDataService.userData.files.filter(file => file.path === this.currentDir).map(x => x.filename).join("\n");
-    }
-    return "";
+    this.liveCommandDiv.nativeElement.focus();
   }
 
   runCommand(cmdStr): string{
@@ -34,7 +33,7 @@ export class TerminalComponent implements OnInit {
       case "":
         return "";
       case "ls":
-        return this.listCurrentDir();
+        return this.commandService.listCurrentDir(this.currentDir.valueOf());
       default:
         return `Command ${cmdStr} not found`;
     }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { File } from '../../models/filesystem';
+import { Path } from '../../models/filesystem';
 import {CommonDataService} from '../../services/commonData.service';
 
 declare var $ : any;
@@ -9,7 +9,7 @@ declare var $ : any;
   styleUrls: ['./file.component.css']
 })
 export class FileComponent implements OnInit {
-  @Input() file: File;
+  @Input() file: Path;
   constructor(public commonDataService: CommonDataService) { }
 
   ngOnInit() {

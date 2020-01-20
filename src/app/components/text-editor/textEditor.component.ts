@@ -1,6 +1,7 @@
 import { Component, ViewChild, HostListener } from '@angular/core';
 import { CommonDataService } from '../../services/commonData.service';
 import { v4 as uuid } from 'uuid';
+import { Path } from '../../models/filesystem';
 
 declare var $ : any;
 @Component({
@@ -40,9 +41,8 @@ export class TextEditorComponent {
 	editorContent: string = "";
 
 	public constructor(public commonDataService: CommonDataService){
-		this.commonDataService.openFileInEditorEvent.subscribe(fileid => {
-			var f = this.commonDataService.userData.files.find(fil => fil.fileid===fileid);
-			this.file = f;
+		this.commonDataService.openFileInEditorEvent.subscribe(file => {
+			this.file = file;
 			this.editorContent = JSON.parse(JSON.stringify(this.file.contents));
 			this.openEditor();
 		});
@@ -54,12 +54,16 @@ export class TextEditorComponent {
 
 	openEditor(){
 		if (!this.file){
-			this.file = {
-				"fileid": uuid(),
+			var currentPathNode = this.commonDataService.getPathNodeFromPath(this.commonDataService.currentPath);
+			var fileid = uuid();
+			this.file = <Path>{
+				"type": "file",
+				"fileid": fileid,
 				"filename": "New File.txt",
-				"path": this.commonDataService.currentPath,
+				"path": fileid,
 				"contents": ""
 			}
+			this.commonDataService.addFile(this.file, currentPathNode);
 		}
 		this.editorOpen = true;
 	}

@@ -50,13 +50,16 @@ export class FileUploadComponent {
     }
 
     saveFile(){
-      var newFile = {
-        "fileid": uuid(),
-        "filename": this.fileName,
-        "path": "/home/__user__/uploads/",
-        "contents": this.fileContent
-      };
-      this.commonDataService.userData.files.push(newFile);
+      var uploadsFolder = this.commonDataService.getOrCreateFolder("root/home/__user__/uploads");
+      var fileid = uuid();
+			var newFile = {
+				"type": "file",
+				"fileid": fileid,
+				"filename": this.fileName,
+				"path": fileid,
+				"contents": this.fileContent
+			};
+      this.commonDataService.addFile(newFile, uploadsFolder);
       this.reset();
       this.commonDataService.fileUploadedEvent.emit(true);
       this.commonDataService.refreshCurrentPathFiles();

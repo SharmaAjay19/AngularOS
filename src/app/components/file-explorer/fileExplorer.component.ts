@@ -11,6 +11,8 @@ declare var $ : any;
 export class FileExplorerComponent {
 
     ESCAPE_KEYCODE = 27;
+    userHomeDir: string = "root/home/__user__";
+    timeout: any;
 
     @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
         if (event.keyCode === this.ESCAPE_KEYCODE) {
@@ -36,6 +38,12 @@ export class FileExplorerComponent {
         this.refreshFileExplorerData();
       });
 
+      this.commonDataService.contextMenuSelectEvent.subscribe(event => {
+        if (event.action === "new"){
+          this.refreshFileExplorerData();
+        }
+      });
+
       this.commonDataService.fileUploadedEvent.subscribe(data => {
         this.refreshFileExplorerData();
       });
@@ -46,17 +54,23 @@ export class FileExplorerComponent {
     }
 
     refreshFileExplorerData(){
-      var allf = Array.from(new Set(this.commonDataService.userData.files.map(x => x.path)));
-      this.folders = allf.map((x: string) => x.replace("/home/__user__/", "").replace("/", ""));
+      if (this.timeout){
+        clearTimeout(this.timeout);
+      }
+      this.timeout = setTimeout(() => {
+        var userHome = this.commonDataService.getPathNodeFromPath(this.userHomeDir);
+        this.folders = Object.keys(userHome.children).map(key => userHome.children[key]).filter(path => path.type==="folder").map(x => x.path);
+      }, 100);
     }
 
     displayFolder(folder){
-      this.commonDataService.currentPath = "/home/__user__/" + folder + "/";
+      // WRITE A OS JOIN METHOD FOR THIS
+      this.commonDataService.currentPath = "root/home/__user__/" + folder;
       this.commonDataService.refreshCurrentPathFiles();
     }
 
     reset(){
-      this.commonDataService.currentPath = "/home/__user__/desktop/";
+      this.commonDataService.currentPath = "root/home/__user__/desktop";
       this.commonDataService.refreshCurrentPathFiles();
     }
 

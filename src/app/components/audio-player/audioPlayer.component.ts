@@ -2,6 +2,7 @@ import { Component, ViewChild, HostListener } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CommonDataService } from '../../services/commonData.service';
 import { v4 as uuid } from 'uuid';
+import { PathNode } from '../../models/filesystem';
 
 declare var $ : any;
 @Component({
@@ -12,6 +13,7 @@ declare var $ : any;
 export class AudioPlayerComponent {
 
     ESCAPE_KEYCODE = 27;
+    music_folder: PathNode;
 
     @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
         if (event.keyCode === this.ESCAPE_KEYCODE) {
@@ -53,7 +55,13 @@ export class AudioPlayerComponent {
     }
 
     refreshAudioFileList(){
-      this.audioFiles = this.commonDataService.userData.files.filter(x => x.path==="/home/__user__/music/");
+      this.audioFiles = [];
+      this.music_folder = this.commonDataService.getOrCreateFolder("root/home/__user__/music");
+      for (var obj in this.music_folder.children){
+        if (this.music_folder.children[obj].type !== "folder"){
+          this.audioFiles.push(this.music_folder.children[obj]);
+        }
+      }
     }
 
     sanitizeUrl(url){
@@ -61,6 +69,7 @@ export class AudioPlayerComponent {
     }
 
     ngOnInit(){
+      this.music_folder = this.commonDataService.getOrCreateFolder("root/home/__user__/music");
     }
 
     loadUrl(){
@@ -72,14 +81,17 @@ export class AudioPlayerComponent {
       audio.play();
     }
 
-    saveAudio(){
+    saveAudio(fileName?: string){
+      this.audioSource = this.urlInput;
+      var fileid = uuid();
       var newFile = {
-        "fileid": uuid(),
-        "filename": "AudioFile",
-        "path": "/home/__user__/music/",
+        "type": "file",
+        "fileid": fileid,
+        "filename": fileName && fileName.length>0 ? fileName : "AudioFile",
+        "path": fileid,
         "contents": this.audioSource
       };
-      this.commonDataService.userData.files.push(newFile);
+      this.commonDataService.addFile(newFile, this.music_folder);
       this.refreshAudioFileList();
     }
 

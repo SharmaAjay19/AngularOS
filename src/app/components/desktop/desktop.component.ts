@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { CommonDataService } from '../../services/commonData.service';
 import { WindowData, WindowRendering } from '../../models/windowRendering';
+import { PathNode } from '../../models/filesystem';
+import { setTime } from 'ngx-bootstrap/chronos/utils/date-setters';
 
 declare var $ : any;
 @Component({
@@ -10,9 +12,14 @@ declare var $ : any;
 })
 export class DesktopComponent {
   desktopFiles: any[] = [];
-  currentPath: string = "/home/__user__/desktop/";
+  desktopNode: PathNode = null;
+  timeout: any;
+  currentPath: string = "root/home/__user__/desktop";
   public constructor(public commonDataService: CommonDataService){
   	this.commonDataService.contextMenuSelectEvent.subscribe(res => {
+      if (res.action == "new"){
+        this.refreshDesktop();
+      }
   		this.hideContextMenu();
   	});
 
@@ -25,12 +32,18 @@ export class DesktopComponent {
     this.commonDataService.openFileUploaderEvent.emit(true);
   }
 
-  openFileInEditor(fileid){
-  	this.commonDataService.openFileInEditorEvent.emit(fileid);
+  openFileInEditor(file){
+  	this.commonDataService.openFileInEditorEvent.emit(file);
   }
 
   refreshDesktop(){
-    this.desktopFiles = this.commonDataService.userData.files.filter(file => file.path === this.currentPath);
+    if (this.timeout){
+      clearTimeout(this.timeout);
+    }
+    this.timeout = setTimeout(()=> {
+      this.desktopNode = this.commonDataService.getPathNodeFromPath(this.currentPath);
+      this.desktopFiles = Object.keys(this.desktopNode.children).map(key => this.desktopNode.children[key]);
+    }, 100);
   }
 
   ngOnInit(){
